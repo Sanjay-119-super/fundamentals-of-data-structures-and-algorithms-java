@@ -43,6 +43,43 @@ class Demo{
 
         return 0; // no valid partition found
     }
+    /**
+     * Prints all possible subarrays of the given array.
+     *
+     * A subarray is a continuous portion of the array.
+     * For each starting index, this method prints all
+     * subarrays that begin at that index.
+     *
+     * Example:
+     * For arr = {1, 2, 3}
+     * Output:
+     * [1] [1 2] [1 2 3]
+     * [2] [2 3]
+     * [3]
+     *
+     * @param arr the input integer array
+     */
+    public void printAllSubarray(int[] arr){
+
+        // Iterate over all starting indices of subarrays
+        for(int start = 0; start < arr.length; start++){
+
+            // Iterate over all possible ending indices from 'start'
+            for(int end = start; end < arr.length; end++){
+
+                // Print the subarray elements from start to end
+                System.out.print("[ ");
+                for (int j = start; j <= end; j++){
+                    System.out.print(arr[j] + " ");
+                }
+                System.out.print("] ");
+            }
+
+            // Move to next line after printing all subarrays for this 'start'
+            System.out.println();
+        }
+    }
+
 }
 
 public class PrefixConcept {
@@ -68,5 +105,6 @@ public class PrefixConcept {
         // Calling the method
         Demo ob = new Demo();
         System.out.println(ob.divideArrayInSubarray(arr));
+        ob.printAllSubarray(arr);
     }
 }
