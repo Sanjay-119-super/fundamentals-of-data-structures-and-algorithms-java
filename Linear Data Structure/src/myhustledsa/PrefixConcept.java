@@ -80,6 +80,36 @@ class Demo{
         }
     }
 
+    public int largestSumContiguousSubarray(int[] arr){
+        int maxi = Integer.MIN_VALUE;
+
+        for(int i =0; i<arr.length; i++){
+            for(int j=i;j<arr.length; j++){
+                int sum =0;
+                for(int k=i; k<=j; k++){
+                    sum+=arr[k];
+                }
+                if (sum>maxi)
+                        maxi=sum;
+            }
+        }
+        return maxi;
+    }
+
+    // TC=n2
+    public int largestSumContiguousSubarrayOptimize(int[] arr){
+        int maxi = Integer.MIN_VALUE;
+        for(int start =0; start<arr.length; start++){
+            int sum=0;
+            for(int end=start; end<arr.length; end++){
+                sum+=arr[end];
+            }
+            if (sum>maxi)
+                    maxi=sum;
+        }
+      return maxi;
+    }
+
 }
 
 public class PrefixConcept {
@@ -105,6 +135,9 @@ public class PrefixConcept {
         // Calling the method
         Demo ob = new Demo();
         System.out.println(ob.divideArrayInSubarray(arr));
-        ob.printAllSubarray(arr);
+       // ob.printAllSubarray(arr);
+       // int i = ob.largestSumContiguousSubarray(arr);
+        int i = ob.largestSumContiguousSubarrayOptimize(arr);
+        System.out.println("Max Subarray Sum: " + i);
     }
 }
